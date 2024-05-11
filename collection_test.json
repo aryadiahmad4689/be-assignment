@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "bbb2f741-9c06-4c81-937d-3694d8665fd0",
+		"name": "Concreate Ai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19024890"
+	},
+	"item": [
+		{
+			"name": "ConcrA",
+			"item": [
+				{
+					"name": "Account Manager",
+					"item": [
+						{
+							"name": "Sign-Up",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Token is returned and saved\", function () {\r",
+											"    var responseData = pm.response.json();\r",
+											"    pm.expect(responseData).to.have.property('data');\r",
+											"    pm.expect(responseData.data).to.have.property('token');\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"dias2\",\r\n    \"email\": \"dias2@example.com\",\r\n    \"password\": \"mySecurePassword\",\r\n    \"age\": \"20\",\r\n    \"gender\": \"male\",\r\n    \"account_name\":\"bri\",\r\n    \"type\":\"credit\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/v1/users/sign-up",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"v1",
+										"users",
+										"sign-up"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign-In",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Token is returned\", function () {\r",
+											"    var responseData = pm.response.json();\r",
+											"    pm.expect(responseData.data).to.have.property('token');\r",
+											"    var token = responseData.data.token;\r",
+											"    pm.environment.set(\"AUTH_USER\", token);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"dias10@example.com\",\r\n    \"password\": \"mySecurePassword\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/v1/account/sign-in",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"v1",
+										"account",
+										"sign-in"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All User Account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Token is returned\", function () {\r",
+											"    var responseData = pm.response.json();\r",
+											"    pm.expect(responseData.data).to.have.property('token');\r",
+											"    var token = responseData.data.token;\r",
+											"    pm.environment.set(\"AUTH_USER\", token);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/v1/users/get-all-user-account",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"v1",
+										"users",
+										"get-all-user-account"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Payment Manager",
+					"item": [
+						{
+							"name": "Send",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Token is returned\", function () {\r",
+											"    var responseData = pm.response.json();\r",
+											"    pm.expect(responseData.data).to.have.property('token');\r",
+											"    var token = responseData.data.token;\r",
+											"    pm.environment.set(\"AUTH_USER\", token);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_payment_id_payed\": \"\",\r\n    \"account_payment_id_received\": \"\",\r\n    \"total_transaction\": 1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/v1/payment/send",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"v1",
+										"payment",
+										"send"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Widthraw",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Token is returned\", function () {\r",
+											"    var responseData = pm.response.json();\r",
+											"    pm.expect(responseData.data).to.have.property('token');\r",
+											"    var token = responseData.data.token;\r",
+											"    pm.environment.set(\"AUTH_USER\", token);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AUTH_USER}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_payment_id_withdraw\": \"6d3a08f5-f3a8-4cb9-bffd-e9e249ede70d\",\r\n    \"total_transaction\": 20000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/v1/payment/widthraw",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"v1",
+										"payment",
+										"widthraw"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

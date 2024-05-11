@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: my_postgres
+    environment:
+      POSTGRES_DB: db_test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: my_app
+    ports:
+      - "8000:8000"
+    environment:
+      APP_VERSION: v1
+      APP_PORT: 8000
+      DB_DRIVER: postgres
+      DB_SOURCE: "postgresql://postgres:postgres@postgres:5432/db_test?sslmode=disable"
+      AUTH_KEY: AUTH_KEY
+    volumes:
+      - ./.env:/app/.env 
+    depends_on:
+      - postgres
+    command: ["./startup.sh"]
+    # command: go run migrate/main.go
+
+volumes:
+  postgres_data:
