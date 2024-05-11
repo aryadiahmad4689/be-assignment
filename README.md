@@ -1,7 +1,7 @@
 # Wallet
 
-## Overvie
-    This application certainly has many shortcomings, therefore I only handle a small part of the features that can be done here. I just want to give an overview of how the test provided works. I hope it's easy to understand.
+## Overvie2
+  This application certainly has many shortcomings, therefore I only handle a small part of the features that can be done here. I just want to give an overview of how the test provided works. I hope it's easy to understand.
 
 ## Features
 - **User Authentication**: Supports sign up and login functionalities.
